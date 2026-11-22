@@ -5,10 +5,10 @@ export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 export async function POST(request: NextRequest) {
-  let body: Record<string, unknown>;
+  let body: unknown;
 
   try {
-    body = (await request.json()) as Record<string, unknown>;
+    body = await request.json();
   } catch {
     return NextResponse.json(
       { error: "Send a JSON body with restaurantId, rating and comment." },
@@ -16,7 +16,14 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  const { restaurantId, rating, comment } = body;
+  if (!body || typeof body !== "object" || Array.isArray(body)) {
+    return NextResponse.json(
+      { error: "Send a JSON body with restaurantId, rating and comment." },
+      { status: 400 },
+    );
+  }
+
+  const { restaurantId, rating, comment } = body as Record<string, unknown>;
 
   if (
     typeof rating !== "number" ||
