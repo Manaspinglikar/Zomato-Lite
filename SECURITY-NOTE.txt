@@ -1,0 +1,3 @@
+SECURITY NOTICE
+
+Credentials supplied with the setup brief have intentionally not been copied into this repository, source code, commit history, archive, or deployment configuration. Revoke and rotate any credentials exposed in chat before production use. Set DATABASE_URL privately in .env.local and Vercel project environment settings.
