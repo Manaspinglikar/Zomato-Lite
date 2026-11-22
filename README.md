@@ -2,7 +2,9 @@
 
 A small restaurant review app for **Ludhiana Burrito**, Sector 32. It has two screens, two APIs, and two database tables.
 
-**Live app:** _added after deployment_
+**Live app:** [https://zomato-lite-ruby.vercel.app](https://zomato-lite-ruby.vercel.app)
+
+**GitHub:** [Manaspinglikar/Zomato-Lite](https://github.com/Manaspinglikar/Zomato-Lite)
 
 ## The one rule
 
@@ -186,12 +188,22 @@ A rating of `500` or a blank comment is rejected with HTTP `400`.
 
 ## Deployment
 
-1. Push the repository to GitHub.
-2. Import it into Vercel.
-3. Add `DATABASE_URL` to the Vercel project's environment variables, using the same value as `.env.local`.
-4. Deploy.
+The live deployment is:
 
-If step 3 is skipped, the build can succeed while every API request fails at runtime with a missing `DATABASE_URL`.
+- Production URL: [https://zomato-lite-ruby.vercel.app](https://zomato-lite-ruby.vercel.app)
+- Vercel project: `man-6eb7/zomato-lite`
+- `DATABASE_URL` is stored as a production secret in Vercel
+
+This deployment was made with the Vercel CLI. The Vercel account does not currently have a GitHub Login Connection, so new Git pushes do not auto-deploy yet.
+
+To enable automatic deployments:
+
+1. Open Vercel account settings and connect the GitHub account.
+2. Import `Manaspinglikar/Zomato-Lite`.
+3. Confirm `DATABASE_URL` is present in the project's Production environment.
+4. Redeploy.
+
+If the environment variable is missing, the build can succeed while every API request fails at runtime with a missing `DATABASE_URL`.
 
 ## The four things worth remembering
 
